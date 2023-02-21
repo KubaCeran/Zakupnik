@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Zakupnik.Data.DataContext;
+using Zakupnik.Repository.Category;
+using Zakupnik.Repository.Product;
 
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
@@ -10,6 +12,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+
 
 const string AllowAll = "AllowAll";
 builder.Services.AddCors(options =>

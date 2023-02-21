@@ -12,13 +12,6 @@ namespace Zakupnik.Data.Mappings
             builder.Property(x => x.UserId).IsRequired();
             builder.Property(x => x.Username).IsRequired();
             builder.Property(x => x.Password).IsRequired();
-            
-            builder.HasData(new User
-            {
-                UserId = 1,
-                Username = "Test",
-                Password = "Test"
-            });
         }
     }
 }
